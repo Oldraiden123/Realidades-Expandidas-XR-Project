@@ -39,7 +39,7 @@ public class LanternController : MonoBehaviour
 
     private void OnActivate()
     {
-        DoCharge();
+        if (_inUse) DoCharge();
         Debug.Log("Winning");
     }
 
@@ -48,7 +48,6 @@ public class LanternController : MonoBehaviour
         if (_inUse)
         {
             DoDecay();
-            CheckCharge();
         }
     }
 
