@@ -22,8 +22,6 @@ public class LanternController : MonoBehaviour
         }
     }
 
-    [SerializeField] InputActionProperty _triggerAction;
-
     [SerializeField] private Light _spotLight;
     [SerializeField] private float _lightMaxIntensity;
 
@@ -37,6 +35,12 @@ public class LanternController : MonoBehaviour
 
             _inUse = value;
         } 
+    }
+
+    private void OnActivate()
+    {
+        DoCharge();
+        Debug.Log("Winning");
     }
 
     private void Update()
@@ -56,15 +60,6 @@ public class LanternController : MonoBehaviour
     private void DoCharge()
     {
         CurrentCharge += _chargeAmount;
-    }
-
-    private void CheckCharge()
-    {
-        if (_triggerAction.action.ReadValue<float>() > 0)
-        {
-            DoCharge();
-            Debug.Log("Winding");
-        }
     }
 
     private void UpdateLightIntensity()
