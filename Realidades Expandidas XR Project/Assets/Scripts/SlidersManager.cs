@@ -28,6 +28,7 @@ public class SlidersManager : MonoBehaviour
                 if (xrSlider.value == 0)
                 {
                     xrSlider.enabled = false;
+                    xrSlider.GetComponent<AudioSource>().Play();
                     currentlySolvedSliders++;
                 }
             }            
