@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 3985799895495494734}
   - component: {fileID: 3403242937515483596}
   - component: {fileID: 1345632421542110633}
-  - component: {fileID: 2135883795778044755}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Untagged
@@ -446,7 +445,7 @@ MonoBehaviour:
   m_ParentInteractableObject: {fileID: 0}
   m_AttachTransform: {fileID: 6092506869208681413}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 1
+  m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -513,41 +512,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LanternController
   _maxCharge: 100
   _chargeAmount: 5
-  _chargeDecay: 1.5
+  _chargeDecay: 0.1
   _currentCharge: 0
   _spotLight: {fileID: 1741243500045535612}
   _lightMaxIntensity: 3
-  _inUse: 1
---- !u!114 &2135883795778044755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8773102755773192821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 461bce25-7762-40c5-b639-f190649be6d6
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _inUse: 0
 --- !u!1001 &6195361021220660393
 PrefabInstance:
   m_ObjectHideFlags: 0

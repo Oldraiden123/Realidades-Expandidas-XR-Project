@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using NaughtyAttributes;
 
 public class LanternController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LanternController : MonoBehaviour
     [SerializeField] private float _chargeAmount;
     [SerializeField] private float _chargeDecay;
 
-    [SerializeField] private float _currentCharge;
+    [SerializeField, ReadOnly] private float _currentCharge;
 
     public float CurrentCharge {
         get => _currentCharge;
@@ -37,28 +38,34 @@ public class LanternController : MonoBehaviour
         } 
     }
 
-    private void OnActivate()
-    {
-        if (_inUse) DoCharge();
-        Debug.Log("Winning");
-    }
+    private XRGrabInteractable _grabInteractable;
 
-    private void Update()
+    private void Start()
     {
-        if (_inUse)
-        {
-            DoDecay();
-        }
+        _grabInteractable = GetComponent<XRGrabInteractable>();
+
+        // Subribe to events to turn on and off the lantern
+        _grabInteractable.selectEntered.AddListener((_) => InUse = true);
+        _grabInteractable.selectExited.AddListener((_) => InUse = false);
+
+        // Subrice to the event to charge the lantern
+        _grabInteractable.activated.AddListener((_) => DoCharge());
+
+        InUse = false;
+    }
+    private void FixedUpdate()
+    {
+        DoDecay();
     }
 
     private void DoDecay()
     {
-        CurrentCharge -= _chargeDecay;
+        if (_inUse) CurrentCharge -= _chargeDecay;
     }
 
     private void DoCharge()
     {
-        CurrentCharge += _chargeAmount;
+        if (_inUse) CurrentCharge += _chargeAmount;
     }
 
     private void UpdateLightIntensity()
