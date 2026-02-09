@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyType == EnemyType.Pursuer)
         {
-            gm.SpawnPursuerEnemy(enemySpawnLocation);
+            gm.SpawnPursuerEnemy(enemySpawnLocation);   
 
         }
     }
