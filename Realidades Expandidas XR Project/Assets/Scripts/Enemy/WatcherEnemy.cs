@@ -54,6 +54,7 @@ public class WatcherEnemy : MonoBehaviour
 
 
     private Vector3 _playerReferencePosition;
+    private Vector3 _destination;
 
     private void Start()
     {
@@ -91,12 +92,18 @@ public class WatcherEnemy : MonoBehaviour
                     // Kill Player
 
                     AttackPlayer();
+
                     SawPlayer = false;
                     IsSpawned = false;
                 }
             }
             else _despawnTimer.CountTimer();
         }
+        else if (_agent.hasPath)
+        {
+            LookAtDestination();
+        }
+        
     }
 
     private Vector3 RandomNavmeshLocation(float radiusMin, float radiusMax)
@@ -122,6 +129,14 @@ public class WatcherEnemy : MonoBehaviour
     private void LookAtPlayer()
     {
         Vector3 pos = _target.position;
+        pos.y = transform.position.y;
+
+        transform.LookAt(pos);
+    }
+
+    private void LookAtDestination()
+    {
+        Vector3 pos = _destination;
         pos.y = transform.position.y;
 
         transform.LookAt(pos);
@@ -168,8 +183,10 @@ public class WatcherEnemy : MonoBehaviour
 
     private IEnumerator RunAwayCR()
     {
-        Vector3 pos = RandomNavmeshLocation(10f, 20f);
+        Vector3 pos = RandomNavmeshLocation(15f, 20f);
+
         _agent.SetDestination(pos);
+        _destination = pos;
 
         yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
 
@@ -190,6 +207,7 @@ public class WatcherEnemy : MonoBehaviour
         pos.y = transform.position.y;
 
         _agent.SetDestination(pos);
+        _destination = pos;
 
         yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
 
