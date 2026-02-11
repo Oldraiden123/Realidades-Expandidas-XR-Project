@@ -66,39 +66,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5882160467636040622, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5882160467636040622, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7429417197556717058, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
-      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429417197556717058, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
-      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
+      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429417197556717058, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
+      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996664109141886590, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
       propertyPath: m_Name
-      value: T Crossing 2 Variant
+      value: T Crossing 2
       objectReference: {fileID: 0}
     - target: {fileID: 8357421934697108388, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8357421934697108388, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8457739682199712980, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
-      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8457739682199712980, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
-      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
+      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457739682199712980, guid: 38524a2595e1f6b43bff2591e025871b, type: 3}
+      propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

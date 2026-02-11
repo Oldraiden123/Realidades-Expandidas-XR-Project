@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1653615724148590098, guid: 009d7e183a8fdea41bfcfe3172109d91, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3199208682775661773, guid: 009d7e183a8fdea41bfcfe3172109d91, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947389845173266509, guid: 009d7e183a8fdea41bfcfe3172109d91, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5684239435288601522, guid: 009d7e183a8fdea41bfcfe3172109d91, type: 3}
       propertyPath: m_Name
-      value: Corner 2 Variant
+      value: Corner 2
       objectReference: {fileID: 0}
     - target: {fileID: 6005057479274945655, guid: 009d7e183a8fdea41bfcfe3172109d91, type: 3}
       propertyPath: m_LocalPosition.x

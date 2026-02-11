@@ -70,6 +70,11 @@ public class WatcherEnemy : MonoBehaviour
         _watchingTimer.OnTimerDone += RunAway;
         _despawnTimer.OnTimerDone += DespawnEnemy;
 
+        
+    }
+
+    private void OnEnable()
+    {
         IsSpawned = true;
     }
 
@@ -214,12 +219,12 @@ public class WatcherEnemy : MonoBehaviour
         DespawnEnemy();
     }
 
-    private void DespawnEnemy()
+    public void DespawnEnemy()
     {
         SawPlayer = false;
         IsSpawned = false;
-
-        gameObject.SetActive(false);
+        
+        //gameObject.SetActive(false);
 
         Debug.Log("Despawn Enemy");
     }
