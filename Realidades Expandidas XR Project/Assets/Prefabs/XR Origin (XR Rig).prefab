@@ -2083,6 +2083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   canvasObject: {fileID: 222415704902789334}
   xrOrigin: {fileID: 0}
+  uiCooldown: 2
+  playerInitializer: {fileID: 0}
 --- !u!1 &6132016516118316924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +2522,6 @@ GameObject:
   - component: {fileID: 638692970219996296}
   - component: {fileID: 316877714326796302}
   - component: {fileID: 5704989578366437474}
-  - component: {fileID: 5118330120877132874}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
   m_TagString: Player
@@ -2561,7 +2562,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 6897393589637210453}
   m_CameraFloorOffsetObject: {fileID: 4264097220322704759}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1.7
+  m_CameraYOffset: 0
 --- !u!114 &944751884468557265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,18 +2670,6 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
---- !u!114 &5118330120877132874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897393589637210453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877c949abe42c2348a3b80296713cdbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &7257943343114370636
 GameObject:
   m_ObjectHideFlags: 0

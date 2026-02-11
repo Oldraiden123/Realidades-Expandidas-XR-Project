@@ -1,8 +1,11 @@
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerInitializer : MonoBehaviour
 {
+
+    public float playerHeight;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -11,16 +14,7 @@ public class PlayerInitializer : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        foreach (GameObject rig in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if(rig != this.gameObject)
-            {
-                GameObject.Destroy(rig);
-            }
-        }
-
-        Vector3 startPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
-        transform.position = startPos;
         
+        GameObject.Find("XR Origin (XR Rig)").GetComponent<XROrigin>().CameraYOffset = playerHeight;
     }
 }

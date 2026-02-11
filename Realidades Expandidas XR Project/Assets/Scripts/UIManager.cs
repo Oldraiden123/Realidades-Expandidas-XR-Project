@@ -5,33 +5,94 @@ public class UIManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private GameObject canvasObject;
+    private GameObject playerXR;
     [SerializeField] private XROrigin xrOrigin;
+    private bool canInteract = true;
+    private float uiCooldownTimer = 0f;
+    [SerializeField] private float uiCooldown = 0.5f;
+    [SerializeField] private PlayerInitializer playerInitializer;
 
+
+    private void Awake()
+    {
+        playerXR = GameObject.Find("XR Origin (XR Rig)");
+        xrOrigin = playerXR.GetComponent<XROrigin>();
+    }
+
+    private void Update()
+    {
+        if(uiCooldownTimer > 0f)
+        {
+            uiCooldownTimer -= Time.deltaTime;
+            if(uiCooldownTimer < 0f)
+            {
+                canInteract = true;
+            }
+            else
+            {
+                canInteract = false;
+            }
+                
+        }
+    }
     public void ExitGame()
     {
-        Debug.Log("Closed Game");
-        Application.Quit();
+        if (canInteract)
+        {
+            Debug.Log("Closed Game");
+            Application.Quit();
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
     public void TestButton()
     {
-        Debug.Log("Button Pressed");
+        if (canInteract)
+        {
+            Debug.Log("Button Pressed");
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
 
     public void ToggleUI()
     {
-        canvasObject.SetActive(!canvasObject.activeSelf);
+        if (canInteract)
+        {
+            canvasObject.SetActive(!canvasObject.activeSelf);
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
 
     public void SetHeightShort()
     {
-        xrOrigin.CameraYOffset = 1.55f;
+        if (canInteract)
+        {
+            xrOrigin.CameraYOffset = 0f;
+            playerInitializer.playerHeight = 0f;
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
     public void SetHeightMedium()
     {
-        xrOrigin.CameraYOffset = 1.7f;
+        if (canInteract)
+        {
+            xrOrigin.CameraYOffset = 0.15f;
+            playerInitializer.playerHeight = 0.15f;
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
     public void SetHeightTall()
     {
-        xrOrigin.CameraYOffset = 1.85f;
+        if (canInteract)
+        {
+            xrOrigin.CameraYOffset = 0.3f;
+            playerInitializer.playerHeight = 0.3f;
+            uiCooldownTimer = uiCooldown;
+        }
+        
     }
 }
