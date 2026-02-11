@@ -117,7 +117,7 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
       m_AllowFreeZMovement: 1
     m_Variable: {fileID: 0}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
       m_AllowFreeZMovement: 1
     m_Variable: {fileID: 0}
