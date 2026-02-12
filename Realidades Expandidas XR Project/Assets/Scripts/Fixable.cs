@@ -4,8 +4,10 @@ public class Fixable : MonoBehaviour
 {
     IFixable _fixableComponent;
 
-    [SerializeField] private bool _isFixed = false;
+    [SerializeField] private bool _isFixed = true;
     public bool IsFixed => _isFixed;
+
+    private bool _broken = false;
 
     [SerializeField] private FixableType _type;
     public FixableType Type => _type;
@@ -16,6 +18,7 @@ public class Fixable : MonoBehaviour
     public void Start()
     {
         _fixableComponent = GetComponent<IFixable>();
+        _isFixed = true;
     }
 
     public void UnFix()
@@ -29,11 +32,12 @@ public class Fixable : MonoBehaviour
         {
             _fixableComponent.UnFix();
             _isFixed = false;
+            _broken = true;
         }
     }
 
     private void Update()
     {
-        _isFixed = _fixableComponent.IsFixed();
+        if (_broken) _isFixed = _fixableComponent.IsFixed();
     }
 }
