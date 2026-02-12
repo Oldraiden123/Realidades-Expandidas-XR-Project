@@ -18,11 +18,25 @@ public class PursuerEnemy : MonoBehaviour
 
     [SerializeField] private int listIndex;
 
+    private float watchTimer;
+    [SerializeField] private float maxWatchTimer = 10f;
+
+    private Transform player;
+    private SphereCollider detectionTrigger;
+
 
 
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        detectionTrigger = gameObject.GetComponent<SphereCollider>();
+        detectionTrigger.enabled = true;
+    }
+
+    private void OnEnable()
+    {
+        detectionTrigger.enabled = true;
     }
 
     // Update is called once per frame
@@ -79,10 +93,40 @@ public class PursuerEnemy : MonoBehaviour
 
     public void ResetEnemy()
     {
+        detectionTrigger.enabled = false;
+        watchTimer = 0;
         isDefeated = false;
         listIndex = 0;
         waypoints.Clear();
     
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            
+            if (watchTimer >= maxWatchTimer)
+            {
+                AttackPlayer();
+            }
+            watchTimer += Time.deltaTime;
+        }
+    }
+
+    public void DefeatEnemy()
+    {
+        isDefeated = true;
+        detectionTrigger.enabled = false;
+        watchTimer = 0;
+    }
+
+    private void AttackPlayer()
+    {
+        //kill player
+        targetPosition = player.position;
+        detectionTrigger.enabled = false;
+        watchTimer = 0;
     }
 
 }

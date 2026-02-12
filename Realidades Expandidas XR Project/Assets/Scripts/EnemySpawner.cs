@@ -8,6 +8,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyType enemyType;
 
 
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

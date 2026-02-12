@@ -13,11 +13,19 @@ public class GameManager : MonoBehaviour
 
     private List<Fixable> _fixables = new List<Fixable>();
 
+    private GameObject player;
+
+    [SerializeField] private Transform endRoomPosition;
+    [SerializeField] private GameObject victoryUI;
+    [SerializeField] private GameObject defeatUI;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetBrokenFixables();
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -96,5 +104,26 @@ public class GameManager : MonoBehaviour
         watcherEnemy.transform.parent = enemyStorage.transform;
         watcherEnemy.GetComponent<WatcherEnemy>().DespawnEnemy();
         pursuerEnemy.SetActive(false);
+    }
+
+    private void MovePlayerToEndRoom()
+    {
+        player.transform.position = endRoomPosition.position;
+
+    }
+
+    public void WinGame()
+    {
+        MovePlayerToEndRoom();
+        defeatUI.SetActive(false);
+        victoryUI.SetActive(true);
+
+    }
+    public void LoseGame()
+    {
+        MovePlayerToEndRoom();
+        defeatUI.SetActive(true);
+        victoryUI.SetActive(false);
+
     }
 }

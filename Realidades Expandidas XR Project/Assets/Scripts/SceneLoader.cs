@@ -16,6 +16,15 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadMainLevel()
     {
-        SceneManager.LoadScene("Sewer test", LoadSceneMode.Single);
+        SceneManager.LoadScene("MapTest", LoadSceneMode.Single);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("StartMenu", LoadSceneMode.Single);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
