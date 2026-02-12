@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public int difficultyLevel = 0;
     public int maxDifficultyLevel = 3;
     [SerializeField] private GameObject pursuerEnemy;
+    [SerializeField] private GameObject watcherEnemy;
     [SerializeField] private GameObject enemyStorage;
 
 
@@ -38,6 +39,26 @@ public class GameManager : MonoBehaviour
         pursuerEnemy.transform.position = enemyStorage.transform.position;
         pursuerEnemy.transform.parent = enemyStorage.transform;
         pursuerEnemy.GetComponent<PursuerEnemy>().ResetEnemy();
+        pursuerEnemy.SetActive(false);
+    }
+
+    public void SpawnWatcherEnemy(Transform spawnLocation)
+    {
+        watcherEnemy.transform.parent = null;
+        watcherEnemy.transform.position = spawnLocation.position;
+        watcherEnemy.transform.rotation = spawnLocation.rotation;
+        foreach (Transform child in spawnLocation)
+        {
+            watcherEnemy.GetComponent<PursuerEnemy>().waypoints.Add(child);
+        }
+        pursuerEnemy.SetActive(true);
+    }
+
+    public void DespawnWatcherEnemy()
+    {
+        watcherEnemy.transform.position = enemyStorage.transform.position;
+        watcherEnemy.transform.parent = enemyStorage.transform;
+        watcherEnemy.GetComponent<WatcherEnemy>().DespawnEnemy();
         pursuerEnemy.SetActive(false);
     }
 }

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4932041628053579579, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_Name
-      value: Corridor 2 Variant
+      value: Corridor 2
       objectReference: {fileID: 0}
     - target: {fileID: 4932041628053579579, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_IsActive
@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976572862616562956, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4976572862616562956, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5627567894040837232, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783383862561555251, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeXMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8783383862561555251, guid: d685f09d94c1a2f45bf0bfc418f7cf06, type: 3}
       propertyPath: m_ClimbSettingsOverride.m_ConstantValue.m_AllowFreeZMovement
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

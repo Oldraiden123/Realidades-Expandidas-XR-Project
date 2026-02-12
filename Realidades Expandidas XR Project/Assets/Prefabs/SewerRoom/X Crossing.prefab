@@ -235,9 +235,9 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
-      m_AllowFreeZMovement: 1
+      m_AllowFreeZMovement: 0
     m_Variable: {fileID: 0}
 --- !u!54 &6135138654179351907
 Rigidbody:
@@ -3102,9 +3102,9 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
-      m_AllowFreeZMovement: 1
+      m_AllowFreeZMovement: 0
     m_Variable: {fileID: 0}
 --- !u!54 &145280719512151075
 Rigidbody:
@@ -3868,9 +3868,9 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
-      m_AllowFreeZMovement: 1
+      m_AllowFreeZMovement: 0
     m_Variable: {fileID: 0}
 --- !u!54 &9158518124823819095
 Rigidbody:
@@ -5418,9 +5418,9 @@ MonoBehaviour:
   m_ClimbSettingsOverride:
     m_UseConstant: 1
     m_ConstantValue:
-      m_AllowFreeXMovement: 0
+      m_AllowFreeXMovement: 1
       m_AllowFreeYMovement: 0
-      m_AllowFreeZMovement: 1
+      m_AllowFreeZMovement: 0
     m_Variable: {fileID: 0}
 --- !u!54 &8474202150010229226
 Rigidbody:
