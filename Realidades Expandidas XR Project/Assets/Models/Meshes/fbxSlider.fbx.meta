@@ -3,7 +3,17 @@ guid: 0d676f4e1d04a954eb7425bcef4e1e1b
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AccentButton1
+    second: {fileID: 2100000, guid: f5d51fa9c83b595429902e786186ab56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chrome
+    second: {fileID: 2100000, guid: 349e5a579ddbe3a48a5be157df94e734, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
