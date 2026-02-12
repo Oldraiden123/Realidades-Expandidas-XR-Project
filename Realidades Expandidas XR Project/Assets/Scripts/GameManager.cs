@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,19 +9,53 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pursuerEnemy;
     [SerializeField] private GameObject watcherEnemy;
     [SerializeField] private GameObject enemyStorage;
+    [SerializeField, MinMaxSlider(1,8)] private Vector2Int _unfixableAmountRange;
 
+    private List<Fixable> _fixables = new List<Fixable>();
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SetBrokenFixables();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (CheckFixables())
+        {
+            Debug.Log("All fixables are fixed!");
+        }
+    }
+
+    private void SetBrokenFixables()
+    {
+        int unfixableAmount = Random.Range(_unfixableAmountRange.x, _unfixableAmountRange.y);
+
+        var tmp = new List<Fixable>(_fixables);
         
+        for (int i = 0; i < unfixableAmount; i++)
+        {
+            Fixable fixable = tmp[Random.Range(0, tmp.Count)];
+            fixable.UnFix();
+
+            Debug.Log($"{fixable.gameObject.name} of type {fixable.Type}was broken");
+
+            tmp.Remove(fixable);
+        }
+    }
+    private bool CheckFixables()
+    {
+        foreach (Fixable fixable in _fixables)
+        {
+            if (!fixable.IsFixed)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void SpawnPursuerEnemy (Transform spawnLocation)

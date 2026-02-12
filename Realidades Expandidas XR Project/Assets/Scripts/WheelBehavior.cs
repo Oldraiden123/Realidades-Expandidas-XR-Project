@@ -1,7 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Content.Interaction;
 
-public class WheelBehavior : MonoBehaviour
+public class WheelBehavior : MonoBehaviour, IFixable
 {
     private XRKnob xrKnob;
     private EnemySpawner enemySpawner;
@@ -16,6 +17,8 @@ public class WheelBehavior : MonoBehaviour
     {
         xrKnob = GetComponent<XRKnob>();
         enemySpawner = GetComponent<EnemySpawner>();
+
+        xrKnob.enabled = false;
     }
 
     // Update is called once per frame
@@ -36,7 +39,16 @@ public class WheelBehavior : MonoBehaviour
             wheelMeter += wheelMeterRate;
             savedValue = xrKnob.value;
         }
-        
+    }
 
+    public void UnFix()
+    {
+        savedValue = 0;
+        xrKnob.enabled = true;
+    }
+
+    public bool IsFixed()
+    {
+        return wheelMeter >= maxMeter;
     }
 }
