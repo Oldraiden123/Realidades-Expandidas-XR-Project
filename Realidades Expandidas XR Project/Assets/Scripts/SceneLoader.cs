@@ -2,26 +2,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] private VignetteBehavior vignetteBehavior;
+    
     public void LoadMainLevel()
     {
-        SceneManager.LoadScene("MapTest", LoadSceneMode.Single);
+        
+        vignetteBehavior.ChangeSceneAfterVignette("MapTest");
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("StartMenu", LoadSceneMode.Single);
+        vignetteBehavior.ChangeSceneAfterVignette("StartMenu");
     }
     public void QuitGame()
     {

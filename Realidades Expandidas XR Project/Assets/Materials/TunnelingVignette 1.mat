@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TunnelingVignette
+  m_Name: TunnelingVignette 1
   m_Shader: {fileID: 4800000, guid: e51b4af1e50be764e8de46e07d4e3f3f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -114,7 +114,7 @@ Material:
     - Vector1_75dd1e4765a74fbfb568941f1cbc3b28: 0.2
     - Vector1_EA51145: 0.7
     - Vector1_b81b3127f28249bf9aa125c543e5fa41: 0.591
-    - _ApertureSize: 0.894
+    - _ApertureSize: 0
     - _BillboardKwToggle: 0
     - _BillboardShadowFade: 0.5
     - _ColorMask: 15

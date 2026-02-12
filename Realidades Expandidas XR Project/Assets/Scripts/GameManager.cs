@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private List<Fixable> _fixables = new List<Fixable>();
 
-    private GameObject player;
+    [SerializeField] private VignetteBehavior vignetteBehaviour;
 
     [SerializeField] private Transform endRoomPosition;
     [SerializeField] private GameObject victoryUI;
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetBrokenFixables();
-        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -108,7 +107,7 @@ public class GameManager : MonoBehaviour
 
     private void MovePlayerToEndRoom()
     {
-        player.transform.position = endRoomPosition.position;
+        vignetteBehaviour.MovePlayerAfterVignette(endRoomPosition);
 
     }
 
