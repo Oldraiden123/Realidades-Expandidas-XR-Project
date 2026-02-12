@@ -6,6 +6,7 @@ public class WheelBehavior : MonoBehaviour, IFixable
 {
     private XRKnob xrKnob;
     private EnemySpawner enemySpawner;
+    private bool hasFixed;
 
     [SerializeField] private float wheelMeter = 0f;
     [SerializeField] private float maxMeter = 100f;
@@ -24,11 +25,13 @@ public class WheelBehavior : MonoBehaviour, IFixable
     // Update is called once per frame
     void Update()
     {
-        if(wheelMeter >= maxMeter)
+        if(IsFixed() && !hasFixed)
         {
-            enemySpawner.SpawnEnemy();
+            enemySpawner.RollForEnemySpawn();
+            hasFixed = true;
             xrKnob.maxAngle = 0;
             Debug.Log("Success");
+            gameObject.GetComponentInChildren<Light>().enabled = false;
         }
     }
 
@@ -45,6 +48,7 @@ public class WheelBehavior : MonoBehaviour, IFixable
     {
         savedValue = 0;
         xrKnob.enabled = true;
+        hasFixed = false;
     }
 
     public bool IsFixed()

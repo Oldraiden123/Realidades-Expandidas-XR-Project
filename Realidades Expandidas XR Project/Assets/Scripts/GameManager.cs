@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             Fixable fixable = tmp[Random.Range(0, tmp.Count)];
             fixable.UnFix();
-
+            fixable.gameObject.GetComponentInChildren<Light>().enabled = true;
             Debug.Log($"{fixable.gameObject.name} of type {fixable.Type}was broken");
 
             tmp.Remove(fixable);

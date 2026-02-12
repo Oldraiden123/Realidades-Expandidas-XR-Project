@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Transform enemySpawnLocation;
     [SerializeField] private GameManager gm;
-    private enum EnemyType { Pursuer, Watcher}
+    private enum EnemyType { Pursuer, Watcher }
     [SerializeField] private EnemyType enemyType;
 
 
@@ -14,10 +14,10 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /* if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnEnemy();
-        }
+        }*/
     }
 
     public void RollForEnemySpawn()
@@ -34,5 +34,7 @@ public class EnemySpawner : MonoBehaviour
             gm.SpawnPursuerEnemy(enemySpawnLocation);   
 
         }
+
+
     }
 }
