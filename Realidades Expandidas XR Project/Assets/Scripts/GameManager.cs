@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         int unfixableAmount = Random.Range(_unfixableAmountRange.x, _unfixableAmountRange.y);
 
-        var tmp = new List<Fixable>(_fixables);
+        var tmp = new List<Fixable>(_fixables)
         
         for (int i = 0; i < unfixableAmount; i++)
         {
