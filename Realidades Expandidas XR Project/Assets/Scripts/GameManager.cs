@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetFixables();
         SetBrokenFixables();
     }
 
@@ -34,6 +35,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("All fixables are fixed!");
         }
+    }
+
+    private void GetFixables()
+    {
+        _fixables.Clear();
+        _fixables.AddRange(FindObjectsByType<Fixable>(0));
     }
 
     private void SetBrokenFixables()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3145670681862166708}
   - component: {fileID: 3257756100462747320}
   - component: {fileID: 3032711270836777947}
+  - component: {fileID: 2636415471155550938}
   m_Layer: 0
   m_Name: Valve
   m_TagString: Untagged
@@ -163,6 +164,20 @@ MonoBehaviour:
   enemySpawnLocation: {fileID: 0}
   gm: {fileID: 0}
   enemyType: 0
+--- !u!114 &2636415471155550938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260828855546467903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7080f895a543f1345a92dd32ba45af8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fixable
+  _isFixed: 0
+  _type: 0
 --- !u!1 &1724097981278178730
 GameObject:
   m_ObjectHideFlags: 0
