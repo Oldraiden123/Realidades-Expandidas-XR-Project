@@ -2,15 +2,17 @@ Creepy ambiance - ???
 
 Moist walking - https://www.youtube.com/watch?v=QeLHk7fzB1I
 
-Valve turning - https://freesound.org/people/sonsdebarcelona/sounds/69758/
-Sliders moving - 
+Valve turning - https://pixabay.com/sound-effects/household-rusty-things-38361/
+Sliders moving - https://pixabay.com/sound-effects/film-special-effects-circuit-breaker-1-sp-90840/ & https://pixabay.com/sound-effects/musical-circuit-breaker-2-dp-90839/ & https://pixabay.com/sound-effects/film-special-effects-circuit-breaker-3-dp-107144/
+				
+
 
 Pursuer enemy walking
-Pursuer enemy idle/breathing sound
+Pursuer enemy idle/breathing sound https://pixabay.com/sound-effects/horror-ghost-breathing-31526/
 
-Watcher enemy ambiance (maybe whispering)
+Watcher enemy ambiance (maybe whispering) https://pixabay.com/sound-effects/horror-creepy-moan-87456/
 
-Defeat jumpscare sound
+Defeat jumpscare sound https://pixabay.com/sound-effects/film-special-effects-scary-scream-401725/
 
 Victory sound
 music - https://pixabay.com/sound-effects/musical-winsquare-6993/

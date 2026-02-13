@@ -511,6 +511,8 @@ MonoBehaviour:
   wheelMeter: 0
   maxMeter: 50
   wheelMeterRate: 0.5
+  sounds: []
+  soundCooldown: 1.5
 --- !u!114 &6998250340300991444
 MonoBehaviour:
   m_ObjectHideFlags: 0
