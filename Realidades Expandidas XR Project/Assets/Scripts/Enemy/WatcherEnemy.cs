@@ -52,7 +52,6 @@ public class WatcherEnemy : MonoBehaviour
         }
     }
 
-
     private Vector3 _playerReferencePosition;
     private Vector3 _destination;
 
@@ -62,7 +61,10 @@ public class WatcherEnemy : MonoBehaviour
 
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _runSpeed;
+    }
 
+    private void OnEnable()
+    {
         _watchingTimer = new Timer(_watchingTime, Timer.TimerReset.Manual);
         _despawnTimer = new Timer(_despawnTime, Timer.TimerReset.Manual);
 
@@ -70,12 +72,14 @@ public class WatcherEnemy : MonoBehaviour
         _watchingTimer.OnTimerDone += RunAway;
         _despawnTimer.OnTimerDone += DespawnEnemy;
 
-        
+        IsSpawned = true;
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        IsSpawned = true;
+        // Unsubscribe from timer events
+        _watchingTimer.OnTimerDone -= RunAway;
+        _despawnTimer.OnTimerDone -= DespawnEnemy;
     }
 
     private void Update()
