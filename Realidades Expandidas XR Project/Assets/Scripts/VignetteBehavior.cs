@@ -1,5 +1,7 @@
-    using UnityEngine;
+using Unity.XR.CoreUtils;
+using UnityEngine;
     using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VignetteBehavior : MonoBehaviour
 {
@@ -9,16 +11,14 @@ public class VignetteBehavior : MonoBehaviour
     private string storedScene;
     private bool loadSceneAfterClosing;
     [SerializeField] private float vignetteSpeed = 3f;
-    private Transform storedPosition;
-    private bool movePlayerAfterSceneClosing;
-    private GameObject player;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         vignetteMat = GetComponent<MeshRenderer>().material;
-        player = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -61,13 +61,7 @@ public class VignetteBehavior : MonoBehaviour
                 loadSceneAfterClosing = false;
                 SceneManager.LoadScene(storedScene, LoadSceneMode.Single);
             }
-            if (movePlayerAfterSceneClosing)
-            {
-                movePlayerAfterSceneClosing = false;
-                wasVignetteTurnedOn = false;
-                isVignetteOn = true;
-                player.transform.position = storedPosition.position;
-            }
+
         }
     }
 
@@ -78,10 +72,4 @@ public class VignetteBehavior : MonoBehaviour
         storedScene = sceneToLoad;
     }
 
-    public void MovePlayerAfterVignette(Transform targetPosition)
-    {
-        wasVignetteTurnedOn = true;
-        movePlayerAfterSceneClosing = true;
-        storedPosition = targetPosition;
-    }
 }

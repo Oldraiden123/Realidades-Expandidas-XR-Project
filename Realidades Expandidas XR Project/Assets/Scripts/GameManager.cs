@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int difficultyLevel = 0;
-    public int maxDifficultyLevel = 3;
+    public int maxDifficultyLevel = 5;
     [SerializeField] private GameObject pursuerEnemy;
     [SerializeField] private GameObject watcherEnemy;
     [SerializeField] private GameObject enemyStorage;
@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private VignetteBehavior vignetteBehaviour;
 
-    [SerializeField] private Transform endRoomPosition;
-    [SerializeField] private GameObject victoryUI;
-    [SerializeField] private GameObject defeatUI;
+
+    private bool hasWon;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        vignetteBehaviour = GameObject.FindWithTag("Player").GetComponentInChildren<VignetteBehavior>();
         GetFixables();
         SetBrokenFixables();
     }
@@ -31,8 +31,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckFixables())
+        if (CheckFixables() && !hasWon)
         {
+            hasWon = true;
+            WinGame();
             Debug.Log("All fixables are fixed!");
         }
     }
@@ -111,25 +113,14 @@ public class GameManager : MonoBehaviour
         watcherEnemy.GetComponent<WatcherEnemy>().DespawnEnemy();
         pursuerEnemy.SetActive(false);
     }
-
-    private void MovePlayerToEndRoom()
-    {
-        vignetteBehaviour.MovePlayerAfterVignette(endRoomPosition);
-
-    }
-
     public void WinGame()
     {
-        MovePlayerToEndRoom();
-        defeatUI.SetActive(false);
-        victoryUI.SetActive(true);
+        vignetteBehaviour.ChangeSceneAfterVignette("WinMenu");
 
     }
     public void LoseGame()
     {
-        MovePlayerToEndRoom();
-        defeatUI.SetActive(true);
-        victoryUI.SetActive(false);
+        vignetteBehaviour.ChangeSceneAfterVignette("LoseMenu");
 
     }
 }

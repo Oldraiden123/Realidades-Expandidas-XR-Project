@@ -22,10 +22,12 @@ public class EnemySpawner : MonoBehaviour
 
     public void RollForEnemySpawn()
     {
+        gm.difficultyLevel++;
         if (Random.Range(gm.difficultyLevel, gm.maxDifficultyLevel) == gm.maxDifficultyLevel)
         {
             SpawnEnemy();
         }
+        
     }
     public void SpawnEnemy()
     {

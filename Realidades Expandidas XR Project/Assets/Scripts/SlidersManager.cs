@@ -8,6 +8,15 @@ public class SlidersManager : MonoBehaviour, IFixable
     [SerializeField]private List<XRSlider> xrSliders = new List<XRSlider> ();   
     [SerializeField] private int currentlySolvedSliders = 0;
     [SerializeField] private int totalSliders = 9;
+    private bool hasFixed;
+    private EnemySpawner enemySpawner;
+
+
+    void Start()
+    {
+        enemySpawner = GetComponent<EnemySpawner>();
+    }
+
 
     private void MessSliders()
     {
@@ -43,8 +52,11 @@ public class SlidersManager : MonoBehaviour, IFixable
             }            
         }
 
-        if(currentlySolvedSliders == totalSliders)
+        if(IsFixed() && !hasFixed)
         {
+            enemySpawner.RollForEnemySpawn();
+            gameObject.GetComponentInChildren<Light>().enabled = false;
+            hasFixed = true;
             Debug.Log("Sliders solved");
         }
     }

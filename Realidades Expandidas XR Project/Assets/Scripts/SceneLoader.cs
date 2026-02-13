@@ -5,6 +5,11 @@ public class SceneLoader : MonoBehaviour
 
     [SerializeField] private VignetteBehavior vignetteBehavior;
     
+    void Start()
+    {
+        vignetteBehavior = GameObject.FindWithTag("Player").GetComponentInChildren<VignetteBehavior>();
+    }
+
     public void LoadMainLevel()
     {
         
