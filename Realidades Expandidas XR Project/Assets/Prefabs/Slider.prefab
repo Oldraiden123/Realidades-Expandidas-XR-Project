@@ -69,6 +69,10 @@ MonoBehaviour:
   - {fileID: 8313483047901216697}
   - {fileID: 7966339942607399393}
   - {fileID: 543523175126053725}
+  sounds:
+  - {fileID: 8300000, guid: a16c4264d78d17f4590e488865557c6c, type: 3}
+  - {fileID: 8300000, guid: a426436614b0e2c44807c4eab7790183, type: 3}
+  - {fileID: 8300000, guid: 446cecbafb120e3409ba01c7ef745f73, type: 3}
   currentlySolvedSliders: 0
   totalSliders: 9
 --- !u!114 &5377604404094773793
