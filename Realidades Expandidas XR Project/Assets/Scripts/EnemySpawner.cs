@@ -36,7 +36,10 @@ public class EnemySpawner : MonoBehaviour
             gm.SpawnPursuerEnemy(enemySpawnLocation);   
 
         }
-
+        else if (enemyType == EnemyType.Watcher)
+        {
+            gm.SpawnWatcherEnemy(enemySpawnLocation);
+        }
 
     }
 }
