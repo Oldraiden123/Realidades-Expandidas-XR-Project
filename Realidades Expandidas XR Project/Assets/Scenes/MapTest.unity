@@ -2151,6 +2151,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1906626002109099746, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
+      propertyPath: enemyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906626002109099746, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
       propertyPath: enemySpawnLocation
       value: 
       objectReference: {fileID: 879475473}
@@ -2171,11 +2175,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4022274235890999604, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
+      propertyPath: enemyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022274235890999604, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
       propertyPath: enemySpawnLocation
       value: 
       objectReference: {fileID: 384018770}
     - target: {fileID: 4130304612486055989, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
       propertyPath: _isFixed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373247840454172727, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
+      propertyPath: enemyType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4373247840454172727, guid: 4dcbfb8d803640142b752ebd0a769f53, type: 3}
@@ -3449,12 +3461,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1634845233}
     - target: {fileID: 5382434402227586957, guid: 622fdd7061232a342b16a63f21074a1d, type: 3}
+      propertyPath: maxDifficultyLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382434402227586957, guid: 622fdd7061232a342b16a63f21074a1d, type: 3}
       propertyPath: _unfixableAmountRange.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5382434402227586957, guid: 622fdd7061232a342b16a63f21074a1d, type: 3}
       propertyPath: _unfixableAmountRange.y
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5838490310074410181, guid: 622fdd7061232a342b16a63f21074a1d, type: 3}
       propertyPath: m_Name
@@ -4686,18 +4702,18 @@ SceneRoots:
   - {fileID: 1897158399}
   - {fileID: 1457726175}
   - {fileID: 599320827}
-  - {fileID: 1087776091}
   - {fileID: 1159263984}
+  - {fileID: 1087776091}
   - {fileID: 1633592014}
-  - {fileID: 1664479971}
   - {fileID: 444690378}
   - {fileID: 1573144755}
   - {fileID: 1302066094}
-  - {fileID: 2506235713905910315}
-  - {fileID: 324839695}
   - {fileID: 1119971133}
   - {fileID: 6333778841823862890}
   - {fileID: 1162455606}
   - {fileID: 581402141}
   - {fileID: 685922654}
   - {fileID: 1911608773242774973}
+  - {fileID: 1664479971}
+  - {fileID: 324839695}
+  - {fileID: 2506235713905910315}

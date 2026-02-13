@@ -31,7 +31,6 @@ public class WheelBehavior : MonoBehaviour, IFixable
             hasFixed = true;
             xrKnob.maxAngle = 0;
             Debug.Log("Success");
-            gameObject.GetComponentInChildren<Light>().enabled = false;
         }
     }
 

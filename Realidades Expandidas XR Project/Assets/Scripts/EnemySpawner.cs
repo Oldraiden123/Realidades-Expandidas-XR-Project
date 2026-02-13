@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyType enemyType;
 
 
-    private void Start()
+    private void Awake()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -22,8 +22,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void RollForEnemySpawn()
     {
+        Debug.Log("Rolling for enemy spawn...");
+
         gm.difficultyLevel++;
-        if (Random.Range(gm.difficultyLevel, gm.maxDifficultyLevel) == gm.maxDifficultyLevel)
+
+        if (Random.Range(gm.difficultyLevel, gm.maxDifficultyLevel + 1) == gm.maxDifficultyLevel)
         {
             SpawnEnemy();
         }
@@ -33,12 +36,14 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyType == EnemyType.Pursuer)
         {
-            gm.SpawnPursuerEnemy(enemySpawnLocation);   
+            gm.SpawnPursuerEnemy(enemySpawnLocation);
+            Debug.Log($"Spawn Pursuer Enemy at {enemySpawnLocation.position}");
 
         }
         else if (enemyType == EnemyType.Watcher)
         {
             gm.SpawnWatcherEnemy(enemySpawnLocation);
+            Debug.Log($"Spawn Watchers Enemy at {enemySpawnLocation.position}");
         }
 
     }

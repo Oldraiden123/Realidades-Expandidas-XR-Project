@@ -12,28 +12,32 @@ public class SlidersManager : MonoBehaviour, IFixable
     private EnemySpawner enemySpawner;
 
 
-    void Start()
+    void Awake()
     {
         enemySpawner = GetComponent<EnemySpawner>();
-    }
 
-
-    private void MessSliders()
-    {
         foreach(XRSlider xrSlider in xrSliders)
         {
             xrSlider.value = 0;
             xrSlider.enabled = true;
         }
 
+        hasFixed = true;
+    }
+
+
+    private void MessSliders()
+    {
         int sliderNum = Random.Range(3, xrSliders.Count);
 
         for (int i = 0; i < sliderNum; i++)
         {
             XRSlider xrSlider = xrSliders[Random.Range(0, xrSliders.Count)];
 
-            xrSlider.value = Random.Range(0f, 1f);
+            xrSlider.value = Random.Range(0.2f, 1f);
         }
+
+        hasFixed = false;
     }
 
     // Update is called once per frame
@@ -46,7 +50,6 @@ public class SlidersManager : MonoBehaviour, IFixable
                 if (xrSlider.value == 0)
                 {
                     xrSlider.enabled = false;
-                    xrSlider.GetComponent<AudioSource>().Play();
                     currentlySolvedSliders++;
                 }
             }            
@@ -55,7 +58,6 @@ public class SlidersManager : MonoBehaviour, IFixable
         if(IsFixed() && !hasFixed)
         {
             enemySpawner.RollForEnemySpawn();
-            gameObject.GetComponentInChildren<Light>().enabled = false;
             hasFixed = true;
             Debug.Log("Sliders solved");
         }
