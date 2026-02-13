@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.107467055, g: 0.21698111, b: 0.12311192, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.016
+  m_FogDensity: 0.161
   m_LinearFogStart: 0
   m_LinearFogEnd: 9.2
   m_AmbientSkyColor: {r: 0.026165891, g: 0.26415092, b: 0.060163736, a: 1}
@@ -1226,6 +1226,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1345632421542110633, guid: c6153b8e787aefb4da1c29c7e6e78b66, type: 3}
+      propertyPath: _lightMaxIntensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7686582671047702415, guid: c6153b8e787aefb4da1c29c7e6e78b66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.471
@@ -1541,7 +1545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4219,6 +4223,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 324839696}
+    - target: {fileID: 1617553167445815295, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_ShowInteractableHoverMeshes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.452
@@ -4233,19 +4241,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.68010455
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7331152
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4253,15 +4261,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 94.296
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6695935575198515569, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6897393589637210453, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154867514321509814, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_TurnAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4550,6 +4566,10 @@ PrefabInstance:
     - target: {fileID: 8286453363005265650, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
       propertyPath: m_Name
       value: Tesselation Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286453363005265650, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

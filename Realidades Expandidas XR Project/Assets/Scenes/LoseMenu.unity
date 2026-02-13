@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tesselation Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 8286453363005265650, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

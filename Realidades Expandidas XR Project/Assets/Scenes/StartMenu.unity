@@ -1412,6 +1412,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1098738560 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8508965303410686204, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+  m_PrefabInstance: {fileID: 1670854623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253013213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1961,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2066571371846699095, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1098738560}
+    - target: {fileID: 2066571371846699095, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4347007495243312243, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2039,6 +2052,10 @@ PrefabInstance:
     - target: {fileID: 8286453363005265650, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
       propertyPath: m_Name
       value: Tesselation Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286453363005265650, guid: f942e0f99826e2743bc171529bce0b7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2329,6 +2346,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3430964760821119725, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619834726310353114, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.005
@@ -2376,6 +2401,10 @@ PrefabInstance:
     - target: {fileID: 6897393589637210453, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310497180206112284, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2476,7 +2505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877c949abe42c2348a3b80296713cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInitializer
-  playerHeight: 0
+  playerHeight: 1.5
 --- !u!4 &1692984626
 Transform:
   m_ObjectHideFlags: 0

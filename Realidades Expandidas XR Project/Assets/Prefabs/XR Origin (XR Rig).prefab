@@ -1212,7 +1212,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 197898389c9307e4e9bddc348fa86538, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2725,7 +2725,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 6897393589637210453}
   m_CameraFloorOffsetObject: {fileID: 4264097220322704759}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 0
+  m_CameraYOffset: 1.7
 --- !u!114 &944751884468557265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2908,7 +2908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7279308810212985457
 Transform:
   m_ObjectHideFlags: 0

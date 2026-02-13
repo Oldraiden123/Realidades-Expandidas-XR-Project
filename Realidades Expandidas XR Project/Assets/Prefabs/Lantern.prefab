@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3ecc74e7ddb8944afadfc046c8027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanternController
+  _effectRange: 0
   _maxCharge: 100
   _chargeAmount: 5
   _chargeDecay: 0.1
