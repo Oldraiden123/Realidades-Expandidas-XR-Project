@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WatcherEnemy : MonoBehaviour
+public class WatcherEnemy : MonoBehaviour, IShineable
 {
     [SerializeField] private GameManager _gm;
 
@@ -37,7 +37,7 @@ public class WatcherEnemy : MonoBehaviour
         }
     }
 
-    private bool _isSpawned = false;
+    [SerializeField] private bool _isSpawned = false;
     private bool IsSpawned
     {
         get => _isSpawned;
@@ -163,7 +163,7 @@ public class WatcherEnemy : MonoBehaviour
 
             if (Physics.Raycast(transform.position, (_target.position - transform.position).normalized, out RaycastHit hit, _detectionRange))
             {
-                if (hit.transform == _target)
+                if (hit.collider.gameObject.GetComponent<Camera>() != null)
                 {
                     result = true;
                     Debug.Log("Saw Player");
@@ -239,5 +239,10 @@ public class WatcherEnemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _detectionRange);
+    }
+
+    public void Shine()
+    {
+        AttackPlayer();
     }
 }

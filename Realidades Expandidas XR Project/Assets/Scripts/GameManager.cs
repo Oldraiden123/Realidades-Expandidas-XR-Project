@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int difficultyLevel = 0;
+    [SerializeField] private int difficultyLevel = 0;
+    public int DifficultyLevel
+    {
+        get => difficultyLevel;
+        set
+        {
+            if (value < 0) difficultyLevel = 0;
+            else if (value > maxDifficultyLevel) difficultyLevel = maxDifficultyLevel;
+            else difficultyLevel = value;
+        }
+    }
     public int maxDifficultyLevel = 5;
     [SerializeField] private GameObject pursuerEnemy;
     [SerializeField] private GameObject watcherEnemy;
@@ -78,10 +88,6 @@ public class GameManager : MonoBehaviour
         pursuerEnemy.transform.parent = null;
         pursuerEnemy.transform.position = spawnLocation.position;
         pursuerEnemy.transform.rotation = spawnLocation.rotation;
-        foreach(Transform child in spawnLocation)
-        {
-            pursuerEnemy.GetComponent<PursuerEnemy>().waypoints.Add(child);
-        }
         pursuerEnemy.SetActive(true);
     }
 
@@ -89,7 +95,6 @@ public class GameManager : MonoBehaviour
     {
         pursuerEnemy.transform.position = enemyStorage.transform.position;
         pursuerEnemy.transform.parent = enemyStorage.transform;
-        pursuerEnemy.GetComponent<PursuerEnemy>().ResetEnemy();
         pursuerEnemy.SetActive(false);
     }
 
@@ -98,10 +103,6 @@ public class GameManager : MonoBehaviour
         watcherEnemy.transform.parent = null;
         watcherEnemy.transform.position = spawnLocation.position;
         watcherEnemy.transform.rotation = spawnLocation.rotation;
-        foreach (Transform child in spawnLocation)
-        {
-            watcherEnemy.GetComponent<PursuerEnemy>().waypoints.Add(child);
-        }
         pursuerEnemy.SetActive(true);
     }
 

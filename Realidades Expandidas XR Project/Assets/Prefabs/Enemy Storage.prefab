@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8130680790953639488}
   - component: {fileID: 3788187981076290920}
-  - component: {fileID: 1984110234821025679}
+  - component: {fileID: 3635989410273304984}
   m_Layer: 0
   m_Name: Pursuer Enemy
   m_TagString: Untagged
@@ -79,38 +79,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbf656059ddd1e4eab2174bb8d0bcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PursuerEnemy
-  isDefeated: 0
-  rotationSpeed: 3
-  movementSpeed: 5
-  gm: {fileID: 0}
-  waypoints: []
-  targetDirection: {x: 0, y: 0, z: 0, w: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
-  distance: 0
-  distanceBuffer: 0.5
-  listIndex: 0
-  maxWatchTimer: 10
---- !u!135 &1984110234821025679
-SphereCollider:
+  _gm: {fileID: 0}
+  _detectionRange: 8
+  _killRange: 2
+  _despawnTime: 20
+  _normalSpeed: 1.5
+  _runSpeed: 5
+  _target: {fileID: 0}
+  _isSpawned: 0
+--- !u!195 &3635989410273304984
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5234115295989304116}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 115
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 2}
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1987567789783081905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 4907459845865853854, guid: a5f9c29db8803824db3a7665d7c8421b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256540934872875974, guid: a5f9c29db8803824db3a7665d7c8421b, type: 3}
+      propertyPath: _detectionRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8256540934872875974, guid: a5f9c29db8803824db3a7665d7c8421b, type: 3}
       propertyPath: _movementThreshold

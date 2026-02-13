@@ -5,6 +5,7 @@ using NaughtyAttributes;
 
 public class LanternController : MonoBehaviour
 {
+    [SerializeField] private float _effectRange;
     [SerializeField] private float _maxCharge;
     [SerializeField] private float _chargeAmount;
     [SerializeField] private float _chargeDecay;
@@ -54,6 +55,11 @@ public class LanternController : MonoBehaviour
 
         InUse = false;
     }
+
+    private void Update()
+    {
+        if (InUse && _spotLight.intensity > 0) DoShine();
+    }
     private void FixedUpdate()
     {
         DoDecay();
@@ -78,6 +84,18 @@ public class LanternController : MonoBehaviour
         float chargeRatio = _currentCharge/_maxCharge;
 
         _spotLight.intensity = Mathf.Lerp(0, _lightMaxIntensity, chargeRatio);
+    }
+
+    private void DoShine()
+    {
+        RaycastHit hit;
+
+        Physics.Raycast(transform.position, transform.forward, out hit, _effectRange);
+
+        if (hit.collider.TryGetComponent<IShineable>(out IShineable shineable))
+        {
+            shineable.Shine();
+        }
     }
 
 }

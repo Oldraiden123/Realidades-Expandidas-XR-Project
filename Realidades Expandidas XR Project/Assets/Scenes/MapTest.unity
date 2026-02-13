@@ -1270,6 +1270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lantern
       objectReference: {fileID: 0}
+    - target: {fileID: 8773102755773192821, guid: c6153b8e787aefb4da1c29c7e6e78b66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2282,7 +2286,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.033333335
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e397b1986bd0730439c6709b1bfafa7e, type: 2}
   m_BuildHeightMesh: 0
@@ -3096,6 +3100,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1853095130396659966, guid: c4163bec53ce94b46b81a487c2411c93, type: 3}
   m_PrefabInstance: {fileID: 1537233574}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1541158443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5382434402227586957, guid: 622fdd7061232a342b16a63f21074a1d, type: 3}
+  m_PrefabInstance: {fileID: 1664479971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cb045237956ba4fb94406b35099f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1001 &1552675186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3210,6 +3225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3788187981076290920, guid: ca280abda554a4a499dbb888c0e9f253, type: 3}
+      propertyPath: _gm
+      value: 
+      objectReference: {fileID: 1541158443}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4200,13 +4219,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 324839696}
-    - target: {fileID: 3524735872661780303, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.513
+      value: 33.04
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4214,7 +4229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.376
+      value: 10.13
       objectReference: {fileID: 0}
     - target: {fileID: 5665402306937436327, guid: cd3ab3fc38fecca49b7b3bf0632043b8, type: 3}
       propertyPath: m_LocalRotation.w

@@ -24,9 +24,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Rolling for enemy spawn...");
 
-        gm.difficultyLevel++;
+        gm.DifficultyLevel++;
 
-        if (Random.Range(gm.difficultyLevel, gm.maxDifficultyLevel + 1) == gm.maxDifficultyLevel)
+        if (Random.Range(gm.DifficultyLevel, gm.maxDifficultyLevel + 1) == gm.maxDifficultyLevel)
         {
             SpawnEnemy();
         }

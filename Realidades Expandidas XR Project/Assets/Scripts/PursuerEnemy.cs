@@ -1,132 +1,272 @@
-using NUnit.Framework;
-using System.Collections.Generic;
+using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.AI;
 
-public class PursuerEnemy : MonoBehaviour
+public class PursuerEnemy : MonoBehaviour, IShineable
 {
+    [SerializeField] private GameManager _gm;
 
-    [SerializeField] private bool isDefeated;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private GameManager gm;
-    public List<Transform> waypoints = new List<Transform>();
-    [SerializeField] private Quaternion targetDirection;
-    [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private float distance;
-    [SerializeField] private float distanceBuffer = 0.5f;
+    [SerializeField] private float _detectionRange = 8f;
+    [SerializeField] private float _killRange = 2f;
 
-    [SerializeField] private int listIndex;
+    [SerializeField] private float _despawnTime = 10f;
 
-    private float watchTimer;
-    [SerializeField] private float maxWatchTimer = 10f;
+    [SerializeField] private float _normalSpeed = 1.5f;
+    [SerializeField] private float _runSpeed = 5f;
 
-    private Transform player;
-    private SphereCollider detectionTrigger;
+    [SerializeField, ReadOnly] private Transform _target;
+    private Timer _despawnTimer;
 
+    private NavMeshAgent _agent;
 
+    private bool _sawPlayer = false;
+    public bool SawPlayer {
+        get => _sawPlayer;
 
-    void Awake()
+        set
+        {
+            if (value != _sawPlayer)
+            {
+                _playerReferencePosition = _target.position;
+            }
+
+            _sawPlayer = value;
+        }
+    }
+
+    [SerializeField] private bool _isSpawned = false;
+    private bool IsSpawned
     {
-        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        detectionTrigger = gameObject.GetComponent<SphereCollider>();
-        detectionTrigger.enabled = true;
+        get => _isSpawned;
+        set
+        {
+            if (value != _isSpawned)
+            {
+                _despawnTimer.ResetTimer();
+            }
+
+            _isSpawned = value;
+        }
+    }
+
+    private Vector3 _playerReferencePosition;
+    private Vector3 _destination;
+    private Coroutine _patrolCoroutine;
+
+    private void Start()
+    {
+        _target = FindAnyObjectByType<PlayerWallBlock>().GetComponentInChildren<Camera>().transform;
+
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     private void OnEnable()
     {
-        detectionTrigger.enabled = true;
+        _despawnTimer = new Timer(_despawnTime, Timer.TimerReset.Manual);
+
+        // Subscribe to timer events
+        _despawnTimer.OnTimerDone += DespawnEnemy;
+
+        IsSpawned = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        if (listIndex >= waypoints.Count)
+        // Unsubscribe from timer events
+        _despawnTimer.OnTimerDone -= DespawnEnemy;
+
+    }
+
+    private void Update()
+    {
+        if (IsSpawned)
         {
-            gm.DespawnPursuerEnemy();
-        }
-        if (isDefeated)
-        {
-            if(listIndex == 0)
+            // Check if player is in range and in line of sight
+            SawPlayer = CheckForPlayer();
+
+            if (SawPlayer)
             {
-                UpdateTarget();
-            }
-            if(transform.rotation != targetDirection)
-            {
-                RotateEnemy();
+                FollowPlayer();
+
+                if (Vector3.Distance(transform.position, _playerReferencePosition) <= _killRange)
+                {
+                    // Kill Player
+
+                    AttackPlayer();
+
+                    SawPlayer = false;
+                    IsSpawned = false;
+                }
             }
             else
             {
-                MoveEnemy();
+                Patrol();
+
+                _despawnTimer.CountTimer();
             }
-            
-            
         }
+
+        LookAtDestination();
     }
 
-    private void UpdateTarget()
+    private Vector3 RandomNavmeshLocation(float radiusMin, float radiusMax, bool awayFromPlayer = false)
     {
-        
-        targetPosition = waypoints[listIndex].position;
-        targetDirection = Quaternion.LookRotation((targetPosition - transform.position).normalized);
+        Debug.Log($"{gameObject.name} is chosing new point");
 
-    }
+        float radius = Random.Range(radiusMin,radiusMax);
 
-    private void RotateEnemy()
-    {
-        
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetDirection, Time.deltaTime * rotationSpeed);
-    }
+        Vector3 direction;
 
-    private void MoveEnemy()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * movementSpeed);
-        distance = Vector3.Distance(waypoints[listIndex].position, transform.position);
-        if (distance <= distanceBuffer)
+        if (awayFromPlayer)
         {
-
-            listIndex++;
-            UpdateTarget();
+            direction = _target.forward * radius;
+            direction += transform.position;
         }
-    }
-
-    public void ResetEnemy()
-    {
-        detectionTrigger.enabled = false;
-        watchTimer = 0;
-        isDefeated = false;
-        listIndex = 0;
-        waypoints.Clear();
-    
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        else
         {
-            
-            if (watchTimer >= maxWatchTimer)
+            direction = Random.insideUnitSphere * radius;
+        }
+
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+
+        if (NavMesh.SamplePosition(direction, out hit, radius, 1)) {
+            finalPosition = hit.position;            
+        }
+
+        return finalPosition;
+    }
+
+    private void LookAtDestination()
+    {
+        Vector3 pos = _agent.steeringTarget;
+        pos.y = transform.position.y;
+
+        transform.LookAt(pos);
+    }
+
+    private bool CheckForPlayer()
+    {
+        bool result = false;
+        Vector3 pos = _target.position;
+        pos.y = transform.position.y;
+
+        if (Vector3.Distance(transform.position, pos) <= _detectionRange)
+        {
+            Debug.DrawRay(transform.position, (_target.position - transform.position).normalized * _detectionRange, Color.red);
+
+            if (Physics.Raycast(transform.position, (_target.position - transform.position).normalized, out RaycastHit hit, _detectionRange))
             {
-                AttackPlayer();
+                Debug.DrawLine(transform.position, hit.point, Color.green);
+
+                if (hit.collider.gameObject.GetComponent<Camera>() != null)
+                {
+                    result = true;
+                    Debug.Log("Saw Player");
+                    Debug.DrawLine(transform.position, hit.point, Color.blue);
+                }
             }
-            watchTimer += Time.deltaTime;
         }
+        return result;
     }
 
-    public void DefeatEnemy()
+    private void FollowPlayer()
     {
-        isDefeated = true;
-        detectionTrigger.enabled = false;
-        watchTimer = 0;
+        _agent.speed = _runSpeed;
+
+        Vector3 pos = _target.position;
+        pos.y = transform.position.y;
+
+        _agent.SetDestination(pos);
     }
+
+    private void Patrol()
+    {
+        _agent.speed = _normalSpeed;
+
+        if (_patrolCoroutine == null) _patrolCoroutine = StartCoroutine(PatrolCR());
+    }
+
+    private IEnumerator PatrolCR()
+    {
+        Vector3 pos = RandomNavmeshLocation(15f, 20f);
+
+        _agent.SetDestination(pos);
+        _destination = pos;
+
+        Debug.Log($"Patrolling to position: {pos}");
+
+
+        yield return new WaitForSeconds(Random.Range(5f, 10f));
+
+        _patrolCoroutine = null;
+    }
+
+    private void RunAway()
+    {
+        SawPlayer = false;
+        IsSpawned = false;
+
+        Debug.Log("Run Away");
+
+        StartCoroutine(RunAwayCR());
+    }
+
+    private IEnumerator RunAwayCR()
+    {
+        Vector3 pos = RandomNavmeshLocation(15f, 20f, true);
+
+        _agent.SetDestination(pos);
+        _destination = pos;
+
+        yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
+
+        DespawnEnemy();
+    }
+
 
     private void AttackPlayer()
     {
-        //kill player
-        targetPosition = player.position;
-        detectionTrigger.enabled = false;
-        watchTimer = 0;
+        Debug.Log("Attack Player");
+
+        StartCoroutine(AttackPlayerCR());
     }
 
+    private IEnumerator AttackPlayerCR()
+    {
+        Vector3 pos = _target.position;
+        pos.y = transform.position.y;
+
+        _agent.SetDestination(pos);
+        _destination = pos;
+
+        yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
+
+        _gm?.LoseGame();
+        DespawnEnemy();
+    }
+
+    public void DespawnEnemy()
+    {
+        SawPlayer = false;
+        IsSpawned = false;
+        
+        //gameObject.SetActive(false);
+        _gm?.DespawnPursuerEnemy();
+
+        Debug.Log("Despawn Enemy");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _detectionRange);
+        Gizmos.DrawWireSphere(transform.position, _killRange);
+    }
+
+    public void Shine()
+    {
+        RunAway();
+    }
 }
