@@ -14,7 +14,7 @@ public class WheelBehavior : MonoBehaviour, IFixable
     float savedValue;
 
 
-    private void Start()
+    private void Awake()
     {
         xrKnob = GetComponent<XRKnob>();
         enemySpawner = GetComponent<EnemySpawner>();
@@ -37,6 +37,8 @@ public class WheelBehavior : MonoBehaviour, IFixable
 
     public void WheelTurned()
     {
+        if (xrKnob == null) return;
+
         if(xrKnob.value > savedValue)
         {
             wheelMeter += wheelMeterRate;

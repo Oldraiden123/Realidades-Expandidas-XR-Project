@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vignetteBehaviour = GameObject.FindWithTag("Player").GetComponentInChildren<VignetteBehavior>();
         GetFixables();
         SetBrokenFixables();
+
+        vignetteBehaviour = GameObject.FindWithTag("Player").GetComponentInChildren<VignetteBehavior>();
     }
 
     // Update is called once per frame
@@ -55,8 +56,6 @@ public class GameManager : MonoBehaviour
         {
             Fixable fixable = tmp[Random.Range(0, tmp.Count)];
             fixable.UnFix();
-            fixable.gameObject.GetComponentInChildren<Light>().enabled = true;
-            Debug.Log($"{fixable.gameObject.name} of type {fixable.Type}was broken");
 
             tmp.Remove(fixable);
         }

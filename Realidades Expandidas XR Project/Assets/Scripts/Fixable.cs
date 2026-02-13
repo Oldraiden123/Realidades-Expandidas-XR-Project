@@ -5,7 +5,25 @@ public class Fixable : MonoBehaviour
     IFixable _fixableComponent;
 
     [SerializeField] private bool _isFixed = true;
-    public bool IsFixed => _isFixed;
+    public bool IsFixed
+    {
+        get => _isFixed;
+        private set
+        {
+            if (_isFixed != value)
+            {
+                _isFixed = value;
+
+                if (_isFixed)
+                {
+                    Debug.Log($"Fixing {gameObject.name} of type {Type}");
+                    _lightMeshRenderer.material = _lightOffMaterial;
+                    _light.enabled = false;
+                }
+            }
+            else _isFixed = value;
+        }
+    }
 
     private bool _broken = false;
 
@@ -14,30 +32,36 @@ public class Fixable : MonoBehaviour
 
     public enum FixableType { Sliders, Valve }
 
+    [SerializeField] private MeshRenderer _lightMeshRenderer;
+    [SerializeField] private Material _lightOnMaterial;
+    [SerializeField] private Material _lightOffMaterial;
+    [SerializeField] private Light _light;
 
-    public void Start()
+
+
+    public void Awake()
     {
         _fixableComponent = GetComponent<IFixable>();
-        _isFixed = true;
+
+        _lightMeshRenderer.material = _lightOffMaterial;
+        _light.enabled = false;
     }
 
     public void UnFix()
     {
-        if (_fixableComponent == null)
-        {
-            _fixableComponent = GetComponent<IFixable>();
-        }
+        Debug.Log($"Unfixing {gameObject.name} of type {Type}");
 
-        if (_fixableComponent != null)
-        {
-            _fixableComponent.UnFix();
-            _isFixed = false;
-            _broken = true;
-        }
+        _isFixed = false;
+        _broken = true;
+
+        _lightMeshRenderer.material = _lightOnMaterial;
+        _light.enabled = true;
+
+        _fixableComponent.UnFix();
     }
 
     private void Update()
     {
-        if (_broken) _isFixed = _fixableComponent.IsFixed();
+        if (_broken) IsFixed = _fixableComponent.IsFixed();
     }
 }

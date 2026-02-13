@@ -178,7 +178,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fixable
   _isFixed: 0
-  _type: 0
+  _type: 1
+  _lightMeshRenderer: {fileID: 2518555588559550325}
+  _lightOnMaterial: {fileID: 2100000, guid: 4cb4a183573e303428cdf56e70124f3c, type: 2}
+  _lightOffMaterial: {fileID: 2100000, guid: b15a6c58b2b861e4e8fb04cbf539e1f5, type: 2}
+  _light: {fileID: 4437564879501523050}
 --- !u!1 &1724097981278178730
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +595,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6226843549086616460}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -990,6 +994,11 @@ PrefabInstance:
       addedObject: {fileID: 2188936893057538127}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d868bc65f1fd940b56a67af733b975, type: 3}
+--- !u!23 &2518555588559550325 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -425565630206218756, guid: 95d868bc65f1fd940b56a67af733b975, type: 3}
+  m_PrefabInstance: {fileID: 6407393731495582345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6872805137436818786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 95d868bc65f1fd940b56a67af733b975, type: 3}
