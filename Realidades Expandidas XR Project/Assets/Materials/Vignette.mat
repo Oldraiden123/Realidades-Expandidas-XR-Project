@@ -127,7 +127,7 @@ Material:
     - Vector1_75dd1e4765a74fbfb568941f1cbc3b28: 0.2
     - Vector1_EA51145: 0.7
     - Vector1_b81b3127f28249bf9aa125c543e5fa41: 0.591
-    - _Aperture: 0
+    - _Aperture: 0.308
     - _ApertureSize: 0.206
     - _BillboardKwToggle: 0
     - _BillboardShadowFade: 0.5
