@@ -20,6 +20,8 @@ public class PursuerEnemy : MonoBehaviour, IShineable
 
     private NavMeshAgent _agent;
 
+    [SerializeField] private AudioClip screamer;
+
     private bool _sawPlayer = false;
     public bool SawPlayer {
         get => _sawPlayer;
@@ -67,6 +69,7 @@ public class PursuerEnemy : MonoBehaviour, IShineable
 
         // Subscribe to timer events
         _despawnTimer.OnTimerDone += DespawnEnemy;
+        gameObject.GetComponent<AudioSource>().Play();
 
         IsSpawned = true;
     }
@@ -210,6 +213,8 @@ public class PursuerEnemy : MonoBehaviour, IShineable
 
         Debug.Log("Run Away");
 
+        
+
         StartCoroutine(RunAwayCR());
     }
 
@@ -243,6 +248,7 @@ public class PursuerEnemy : MonoBehaviour, IShineable
 
         yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
 
+        gameObject.GetComponent<AudioSource>().PlayOneShot(screamer);
         _gm?.LoseGame();
         DespawnEnemy();
     }
@@ -268,5 +274,6 @@ public class PursuerEnemy : MonoBehaviour, IShineable
     public void Shine()
     {
         RunAway();
+        gameObject.GetComponent<AudioSource>().PlayOneShot(screamer);
     }
 }

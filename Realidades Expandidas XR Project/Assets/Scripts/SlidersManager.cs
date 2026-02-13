@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class SlidersManager : MonoBehaviour, IFixable
 {
-    [SerializeField]private List<XRSlider> xrSliders = new List<XRSlider> ();   
+    [SerializeField] private List<XRSlider> xrSliders = new List<XRSlider>();
+    [SerializeField] private List<AudioClip> sounds = new List<AudioClip>();
     [SerializeField] private int currentlySolvedSliders = 0;
     [SerializeField] private int totalSliders = 9;
     private bool hasFixed;
@@ -18,6 +19,7 @@ public class SlidersManager : MonoBehaviour, IFixable
 
         foreach(XRSlider xrSlider in xrSliders)
         {
+            xrSlider.gameObject.GetComponent<AudioSource>().clip = sounds[Random.Range(0,sounds.Count)]; 
             xrSlider.value = 0;
             xrSlider.enabled = true;
         }

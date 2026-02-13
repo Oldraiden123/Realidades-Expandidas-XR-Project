@@ -22,6 +22,8 @@ public class WatcherEnemy : MonoBehaviour, IShineable
     private NavMeshAgent _agent;
 
     private bool _sawPlayer = false;
+    [SerializeField] private AudioClip screamer;
+
     public bool SawPlayer {
         get => _sawPlayer;
 
@@ -67,6 +69,7 @@ public class WatcherEnemy : MonoBehaviour, IShineable
     {
         _watchingTimer = new Timer(_watchingTime, Timer.TimerReset.Manual);
         _despawnTimer = new Timer(_despawnTime, Timer.TimerReset.Manual);
+        gameObject.GetComponent<AudioSource>().Play();
 
         // Subscribe to timer events
         _watchingTimer.OnTimerDone += RunAway;
@@ -185,6 +188,8 @@ public class WatcherEnemy : MonoBehaviour, IShineable
         SawPlayer = false;
         IsSpawned = false;
 
+        gameObject.GetComponent<AudioSource>().PlayOneShot(screamer);
+
         Debug.Log("Run Away");
 
         StartCoroutine(RunAwayCR());
@@ -220,6 +225,7 @@ public class WatcherEnemy : MonoBehaviour, IShineable
 
         yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
 
+        gameObject.GetComponent<AudioSource>().PlayOneShot(screamer);
         DespawnEnemy();
         _gm?.LoseGame();
     }
