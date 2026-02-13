@@ -8,6 +8,7 @@ public class LanternController : MonoBehaviour
     [SerializeField] private float _maxCharge;
     [SerializeField] private float _chargeAmount;
     [SerializeField] private float _chargeDecay;
+    [SerializeField] private PlaySound _chargeSound;
 
     [SerializeField, ReadOnly] private float _currentCharge;
 
@@ -65,7 +66,11 @@ public class LanternController : MonoBehaviour
 
     private void DoCharge()
     {
-        if (_inUse) CurrentCharge += _chargeAmount;
+        if (_inUse)
+        {
+            CurrentCharge += _chargeAmount;
+            _chargeSound.SoundPlay();
+        }
     }
 
     private void UpdateLightIntensity()

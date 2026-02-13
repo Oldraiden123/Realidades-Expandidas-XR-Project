@@ -44,9 +44,12 @@ public class PlaySound : MonoBehaviour
 
         Debug.Log($"Playing {clip.name} at pitch {pitch}");
 
-        _audioSource.clip = clip;
-        _audioSource.pitch = pitch;
-        _audioSource.Play();
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.clip = clip;
+            _audioSource.pitch = pitch;
+            _audioSource.Play();
+        }
     }
 
     public void SoundPlay()
@@ -71,8 +74,11 @@ public class PlaySound : MonoBehaviour
 
         Debug.Log($"Playing {clip.name} at pitch {pitch}");
     
-        _audioSource.clip = clip;
-        _audioSource.pitch = pitch;
-        _audioSource.Play();
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.clip = clip;
+            _audioSource.pitch = pitch;
+            _audioSource.Play();
+        }
     }
 }
