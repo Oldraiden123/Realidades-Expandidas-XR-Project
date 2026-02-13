@@ -221,6 +221,7 @@ public class WatcherEnemy : MonoBehaviour
         yield return new WaitUntil(() => Vector3.Distance(transform.position, pos) <= _agent.stoppingDistance);
 
         DespawnEnemy();
+        _gm?.LoseGame();
     }
 
     public void DespawnEnemy()
@@ -229,6 +230,7 @@ public class WatcherEnemy : MonoBehaviour
         IsSpawned = false;
         
         //gameObject.SetActive(false);
+        _gm?.DespawnWatcherEnemy();
 
         Debug.Log("Despawn Enemy");
     }

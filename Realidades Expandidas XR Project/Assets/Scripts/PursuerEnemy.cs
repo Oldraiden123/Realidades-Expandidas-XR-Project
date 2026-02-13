@@ -26,7 +26,7 @@ public class PursuerEnemy : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
